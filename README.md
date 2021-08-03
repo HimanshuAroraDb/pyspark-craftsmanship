@@ -1,5 +1,7 @@
 # pyspark-craftsmanship
 
+This project provides a standard model for pyspark projects enforcing the most cutting edge python and CI/CD best practices.
+
 To install dependencies: `poetry install`
 
 To run unit tests: `poetry run pytest`
