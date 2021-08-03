@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "jobs"
+version = "0.1.0"
+description = ""
+authors = ["HimanshuAroraDB <himanshu.arora@databricks.com>"]
+packages = [
+    { include = "jobs" },
+    { include = "dependencies" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+pyspark = "^3.1.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
