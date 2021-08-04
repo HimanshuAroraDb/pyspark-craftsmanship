@@ -1,6 +1,6 @@
 # pyspark-craftsmanship
 
-This project provides a standard model for pyspark projects enforcing the most cutting edge python and CI/CD best practices. It relias on [poetry](https://python-poetry.org/) a python packaging and dependency management library.
+This project provides a standard model for pyspark projects enforcing the most cutting edge python and CI/CD best practices. It relies on [poetry](https://python-poetry.org/) a python packaging and dependency management library.
 
 To install dependencies: `poetry install`
 
