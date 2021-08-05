@@ -11,7 +11,9 @@ def main():
     log.warn('covid_bronze_job is up-and-running')
 
     # execute ETL pipeline
+    log.info(f'Reading raw file: {settings.input_path}')
     data = extract_data(spark)
+    log.info(f'Writing bronze table at: {settings.bronze_delta_path}')
     load_data(data, settings.bronze_delta_path)
 
     # log the success and terminate Spark application
