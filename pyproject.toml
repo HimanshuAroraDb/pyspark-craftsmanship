@@ -5,11 +5,13 @@ description = ""
 authors = ["HimanshuAroraDB <himanshu.arora@databricks.com>"]
 packages = [
     { include = "jobs" },
-    { include = "dependencies" }
+    { include = "dependencies" },
+    { include = "config" }
 ]
 
 [tool.poetry.dependencies]
 python = "^3.7"
+dynaconf = "^3.1.4"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

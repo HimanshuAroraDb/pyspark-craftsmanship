@@ -1,7 +1,7 @@
 
 
 from dependencies.spark import start_spark
-
+from config.config import settings
 
 def main():
     # start Spark application and get Spark session, logger
@@ -12,7 +12,7 @@ def main():
 
     # execute ETL pipeline
     data = extract_data(spark)
-    load_data(data, "./out/covid/bronze")
+    load_data(data, settings.bronze_delta_path)
 
     # log the success and terminate Spark application
     log.warn('covid_bronze_job is finished')
@@ -24,7 +24,7 @@ def extract_data(spark):
         spark
         .read
         .option("header", True)
-        .csv('tests/test_data/covid.csv'))
+        .csv(settings.input_path))
 
     return df
 

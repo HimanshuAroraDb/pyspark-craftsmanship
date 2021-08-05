@@ -1,0 +1,11 @@
+[default]
+input_path = "tests/test_data/covid.csv"
+bronze_delta_path= "./out/covid/bronze"
+
+[development]
+input_path = "tests/test_data/covid.csv"
+bronze_delta_path= "./out/covid/bronze"
+
+[production]
+input_path = "tests/test_data/covid.csv"
+bronze_delta_path= "./out/covid/bronze"

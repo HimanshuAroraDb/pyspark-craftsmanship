@@ -43,3 +43,5 @@ pip-wheel-metadata
 
 out/
 out/*
+
+.secrets.*
