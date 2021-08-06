@@ -1,4 +1,6 @@
 
 import os
-
-os.chdir(os.path.dirname(__file__))
+try:
+    os.chdir(os.path.dirname(__file__))
+except OSError:
+    pass

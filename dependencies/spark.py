@@ -9,12 +9,11 @@ from pyspark.sql import SparkSession
 from dependencies import logging
 
 
-def start_spark(app_name='my_spark_app', master='local[*]'):
+def start_spark(app_name='my_spark_app'):
     # get Spark session factory
     spark_builder = (
         SparkSession
         .builder
-        .master(master)
         .appName(app_name))
 
     # create session and retrieve Spark logger object
