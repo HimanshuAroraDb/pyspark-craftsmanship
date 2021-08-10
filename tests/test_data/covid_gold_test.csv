@@ -1,0 +1,9 @@
+date,state,positive,negative,hospitalizedCurrently,onVentilatorCurrently,recovered,death,total,totalTestResultsIncrease,score
+20210101,LA,1,1,1,1,1,1,5,2,1.3
+20210101,LA,1,1,1,1,1,1,5,2,1.3
+20210102,LA,1,1,1,1,1,1,5,2,1.3
+20210101,NY,1,1,1,1,1,1,5,2,1.3
+20210101,NY,1,1,1,1,1,1,5,2,1.3
+20210102,NY,1,1,1,1,1,1,5,2,1.3
+20210102,NY,1,1,1,1,1,1,5,2,1.3
+20210103,UT,1,1,1,1,1,1,5,2,1.3

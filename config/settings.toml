@@ -1,11 +1,17 @@
 [default]
 input_path = "tests/test_data/covid.csv"
 bronze_delta_path= "./out/covid/bronze"
+sliver_delta_path= "./out/covid/silver"
+gold_delta_path = "./out/covid/gold"
 
 [development]
 input_path = "tests/test_data/covid.csv"
 bronze_delta_path= "./out/covid/bronze"
+sliver_delta_path= "./out/covid/silver"
+gold_delta_path = "./out/covid/gold"
 
 [production]
 input_path = "abfss://demo-data@himanshudemostoageacc.dfs.core.windows.net/us_states_covid19_daily.csv"
 bronze_delta_path= "abfss://demo-data@himanshudemostoageacc.dfs.core.windows.net/out/covid/bronze"
+sliver_delta_path= "abfss://demo-data@himanshudemostoageacc.dfs.core.windows.net/out/covid/silver"
+gold_delta_path = "abfss://demo-data@himanshudemostoageacc.dfs.core.windows.net/out/covid/gold"

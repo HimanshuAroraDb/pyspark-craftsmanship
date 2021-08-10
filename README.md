@@ -4,7 +4,7 @@ This project provides a standard model for pyspark projects enforcing the most c
 
 To install dependencies: `poetry install`
 
-To run unit tests: `poetry run pytest`
+To run unit tests: `poetry run pytest tests`
 
 To build a wheel package: `poetry build`
 
