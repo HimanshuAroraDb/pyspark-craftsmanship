@@ -13,8 +13,11 @@ def main():
     # execute ETL pipeline
     log.info(f'Reading raw file: {settings.sliver_delta_path}')
     data = extract_data(spark)
+
+    transformed_data = transform(data)
+
     log.info(f'Writing gold table at: {settings.gold_delta_path}')
-    load_data(data, settings.gold_delta_path)
+    load_data(transformed_data, settings.gold_delta_path)
 
     # log the success and terminate Spark application
     log.warn('covid_gold_job is finished')
