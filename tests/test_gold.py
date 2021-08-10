@@ -3,7 +3,7 @@ from jobs import gold
 from chispa import assert_df_equality
 
 
-def test_covid_sliver_transformation(spark_session):
+def test_covid_gold_transformation(spark_session):
     test_dir_path = os.path.dirname(os.path.realpath(__file__))
 
     input_df = (
