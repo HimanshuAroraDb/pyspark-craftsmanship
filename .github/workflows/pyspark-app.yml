@@ -1,0 +1,45 @@
+name: Pyspark CICD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    env:
+      DEPLOYMENT_PATH: dbfs:/tmp/pyspark-craftsmanship/covid-job.whl
+      DATABRICKS_URL: https://adb-984752964297111.11.azuredatabricks.net
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.7
+    - uses: actions/setup-java@v1
+      with:
+        java-version: '11'
+    - name: Install dependencies
+      run: |
+        sudo apt install python3-pip
+        python3 -m pip install poetry
+        poetry install
+    - name: Configure Databricks CLI
+      env:
+        db_host: $DATABRICKS_URL
+        db_token: ${{ secrets.DATABRICKS_TOKEN }}
+      run: |
+        echo "${db_host}
+        $db_token" | pipenv run databricks configure --token
+    - name: Test with pytest
+      run: |
+        poetry run pytest tests
+    - name: Package deployment artifact
+      run: |
+        poetry build
+    - name: Deploy artifact
+      run: |
+        poetry run databricks fs cp ./dist/*.whl $DEPLOYMENT_PATH --overwrite
