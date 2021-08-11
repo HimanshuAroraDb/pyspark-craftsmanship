@@ -1,4 +1,4 @@
-name: Pyspark CICD
+name: build
 
 on:
   push:
