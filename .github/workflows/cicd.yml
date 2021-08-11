@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  Build And Deploy:
+  Build_And_Deploy:
 
     runs-on: ubuntu-latest
     env:
