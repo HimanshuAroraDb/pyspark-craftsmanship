@@ -22,7 +22,7 @@ We have used Databricks as the deployment destination but you are not bound to d
 
 To install dependencies: `poetry install`
 
-To run unit tests: `poetry run pytest tests`
+To run unit tests: `poetry run pytest tests -v --junitxml="result.xml"`
 
 To build a wheel package: `poetry build`
 
