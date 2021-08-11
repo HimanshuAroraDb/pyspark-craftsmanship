@@ -33,7 +33,7 @@ jobs:
         db_token: ${{ secrets.DATABRICKS_TOKEN }}
       run: |
         echo "${db_host}
-        $db_token" | pipenv run databricks configure --token
+        $db_token" | poetry run databricks configure --token
     - name: Test with pytest
       run: |
         poetry run pytest tests
