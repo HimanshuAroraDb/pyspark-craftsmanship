@@ -13,7 +13,7 @@ To build a wheel package: `poetry build`
 To run pyspark jobs locally: `poetry run spark-submit --packages io.delta:delta-core_2.12:1.0.0 --py-files dist/jobs-0.1.0-py3-none-any.whl jobs/bronze.py`
 
 To run all the job as pipeline on Databricks execute following steps:
- - Import `etl_pipeline_notebook.py` file as notebook on Databricks
+ - Import `data_pipeline_notebook.py` file as notebook on Databricks
  - Make sure to change the input & output path configurations in settings.toml file according to your cloud settings
  - As you set input/output paths also make sure your cluster have necessary permission to access those paths (either via passthrough or mounting via service principal, access key etc.)
  - Install this project's build package as a wheel library on your cluster
