@@ -4,6 +4,7 @@
 
 This project provides a standard model for pyspark projects enforcing the most cutting edge python, software cratsmanship and CI/CD best practices.
 It relies on [poetry](https://python-poetry.org/) a python packaging and dependency management library. We have used [dynaconf](https://www.dynaconf.com/) for multi environment configuration management and [pytest](https://docs.pytest.org/en/6.2.x/) & [chispa](https://github.com/MrPowers/chispa) for pyspark unit testing.
+You can use this model to bootstrap your own pyspark project.
 
 To install dependencies: `poetry install`
 
