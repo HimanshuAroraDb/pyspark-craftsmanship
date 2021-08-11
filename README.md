@@ -10,6 +10,13 @@ You can use this model to bootstrap your own pyspark project.
 
 ![Structure](https://github.com/HimanshuAroraDb/pyspark-craftsmanship/blob/main/structure.png?raw=true)
 
+### CI/CD
+
+We have used the GitHub [actions](https://docs.github.com/en/actions) for CI/CD part. As you can see in the [cicd workflow file](https://github.com/HimanshuAroraDb/pyspark-craftsmanship/blob/main/.github/workflows/cicd.yml). As the part of CICD workflow we start by installing all the necesary dependencies like python, jdk and other python packages defined in the poerty description file. We also install and set up [databricks-cli](https://docs.databricks.com/dev-tools/cli/index.html) as it is needed to interact with workspace's dbfs. 
+Once all is installed and setup we run the unit tests, prepare poetry wheel package and copy that package to databricks dnfs file system.
+
+### Necessary commands
+
 To install dependencies: `poetry install`
 
 To run unit tests: `poetry run pytest tests`
