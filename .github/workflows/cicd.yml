@@ -11,7 +11,7 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      DEPLOYMENT_PATH: dbfs:/tmp/pyspark-craftsmanship/covid-job.whl
+      DEPLOYMENT_PATH: /FileStore/jars/pyspark-craftsmanship
       DATABRICKS_URL: https://adb-984752964297111.11.azuredatabricks.net
     steps:
     - uses: actions/checkout@v2
