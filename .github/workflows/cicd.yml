@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  build-and-deploy:
 
     runs-on: ubuntu-latest
     env:
@@ -29,7 +29,7 @@ jobs:
         poetry install
     - name: Configure Databricks CLI
       env:
-        db_host: $DATABRICKS_URL
+        db_host: ${{ env.DATABRICKS_URL }}
         db_token: ${{ secrets.DATABRICKS_TOKEN }}
       run: |
         echo "${db_host}
