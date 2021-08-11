@@ -37,7 +37,7 @@ jobs:
     - name: Test with pytest
       run: |
         poetry run pytest tests
-    - name: Package deployment artifact
+    - name: Build package
       run: |
         poetry build
     - name: Deploy artifact
