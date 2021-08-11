@@ -45,3 +45,5 @@ out/
 out/*
 
 .secrets.*
+
+/tests/*.xml
