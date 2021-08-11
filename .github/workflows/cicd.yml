@@ -42,4 +42,4 @@ jobs:
         poetry build
     - name: Deploy artifact
       run: |
-        poetry run databricks fs cp ./dist/*.whl $DEPLOYMENT_PATH --overwrite
+        poetry run databricks fs cp ./dist $DEPLOYMENT_PATH -r --overwrite
