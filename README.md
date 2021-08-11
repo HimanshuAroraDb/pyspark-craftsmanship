@@ -34,6 +34,6 @@ To run all the job as pipeline on Databricks execute following steps:
  - Once the configurations are set accordingly then run the CI/CD pipeline so that the recent wheel can be deplyed to dbfs.
  - As you set input/output paths also make sure your cluster have necessary permission to access those paths (either via passthrough or mounting via service principal, access key etc.).
  - Install project's wheel package available on dbfs as a library on your cluster.
- - Don't forget to set `ENV_FOR_DYNACONF=production` env variable un your cluster conf to actiave production conf.
+ - Don't forget to set `ENV_FOR_DYNACONF=production` env variable in your cluster conf to actiave production configuration settings.
  - Now you can execute your notebook.
  - So either run your notebook interactively or schedule it as a cron job taking in account the above steps.
