@@ -1,3 +1,5 @@
+![build status](https://github.com/HimanshuAroraDb/pyspark-craftsmanship/actions/workflows/cicd.yml/badge.svg)
+
 # pyspark-craftsmanship
 
 This project provides a standard model for pyspark projects enforcing the most cutting edge python and CI/CD best practices. It relies on [poetry](https://python-poetry.org/) a python packaging and dependency management library.
