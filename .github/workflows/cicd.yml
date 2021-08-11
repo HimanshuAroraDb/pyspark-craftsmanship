@@ -11,7 +11,7 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      DEPLOYMENT_PATH: dbfs:/tmp/pyspark-craftsmanship/covid-job.whl
+      DEPLOYMENT_PATH: dbfs:/FileStore/jars/pyspark-craftsmanship
       DATABRICKS_URL: https://adb-984752964297111.11.azuredatabricks.net
     steps:
     - uses: actions/checkout@v2
@@ -37,9 +37,9 @@ jobs:
     - name: Test with pytest
       run: |
         poetry run pytest tests
-    - name: Package deployment artifact
+    - name: Build package
       run: |
         poetry build
     - name: Deploy artifact
       run: |
-        poetry run databricks fs cp ./dist/*.whl $DEPLOYMENT_PATH --overwrite
+        poetry run databricks fs cp ./dist $DEPLOYMENT_PATH -r --overwrite
