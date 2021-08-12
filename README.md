@@ -38,9 +38,8 @@ To run pyspark jobs locally: `poetry run spark-submit --packages io.delta:delta-
 To run all the job as pipeline on Databricks execute following steps:
  - Import `data_pipeline_notebook.py` file as notebook on Databricks.
  - Make sure to change the input & output path configurations in settings.toml file according to your cloud settings.
- - Once the configurations are set accordingly then run the CI/CD pipeline so that the recent wheel can be deplyed to dbfs.
- - As you set input/output paths also make sure your cluster have necessary permission to access those paths (either via passthrough or mounting via service principal, access key etc.).
+ - Once the configurations are set accordingly then run the CI/CD pipeline so that the recent wheel can be deployed to dbfs.
+ - As you set input/output paths also make sure your cluster have necessary permission to access those paths (either via passthrough or via mounting using a service principal or an access key for example).
  - Install project's wheel package available on dbfs as a library on your cluster.
  - Don't forget to set `ENV_FOR_DYNACONF=production` env variable in your cluster conf to actiave production configuration settings.
- - Now you can execute your notebook.
- - So either run your notebook interactively or schedule it as a cron job taking in account the above steps.
+ - Now you are good to go, so either run your notebook interactively or schedule it as a cron job taking in account the above steps.
