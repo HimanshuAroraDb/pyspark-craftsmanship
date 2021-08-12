@@ -13,7 +13,7 @@ You can use this model as an accelerator to bootstrap your own pyspark project a
 
 In this model we are using covid-19 Kaggle dataset. In the jobs package you will find 3 jobs which represent bronze, silver and gold layers of multihop data pipeline. These jobs are quite simple and straightfoward as it's just a model to help you bootstrap but in real life you can have a lot more jobs in there with various level of complexity depending on the usecase. 
 
-The dependencies package is supposed to have all the utility modules that are supposed to be used by multiple jobs. In this model we have two modules. First one is spark.py which creates the spark session and another one is logger.py which initizes the logger for pyspark.
+The dependencies package is supposed to have all the utility modules that are supposed to be used by multiple jobs. In this model we have two modules. First one is spark.py which creates the spark session and another one is logger.py which initializes the logger for pyspark.
 
 Dynaconf is used for project configuration management. The config file (settings.toml) is present in config package where you can add environment (dev/qa/prod for example) specific configurations. Dynaconf also allows to override the configurations at run time using environment variables.
 
