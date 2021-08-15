@@ -37,7 +37,12 @@ jobs:
         $db_token" | poetry run databricks configure --token
     - name: Test with pytest
       run: |
-        poetry run pytest tests
+        poetry run pytest tests -v --junitxml="result.xml"
+    - name: Publish Unit Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v1
+      if: always()
+      with:
+        files: result.xml
     - name: Build package
       run: |
         poetry build
