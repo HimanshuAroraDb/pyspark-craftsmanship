@@ -54,10 +54,10 @@ jobs:
         poetry run databricks workspace import --language PYTHON --overwrite ./data_pipeline_notebook.py $NOTEBOOK_PATH
     - name: Create job
       run: |
-        echo '{
+        poetry run databricks jobs create --json '{
           "name": "himanshu-test-job",
           "existing_cluster_id": "0114-122447-foods609",
           "notebook_task": {
-            "notebook_path": "${NOTEBOOK_PATH}"
+            "notebook_path": "${{ env.NOTEBOOK_PATH }}"
           }
-        }' | poetry run databricks jobs create --json
+        }'
