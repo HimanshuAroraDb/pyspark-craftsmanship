@@ -73,7 +73,7 @@ jobs:
           },
          "libraries": [
             {
-              "whl": "${{ env.DEPLOYMENT_PATH }}/jobs-0.1.0-py3-none-any.whl"
+              "whl": "${{ env.DEPLOYMENT_PATH }}/*.whl"
             }
           ],
           "notebook_task": {
