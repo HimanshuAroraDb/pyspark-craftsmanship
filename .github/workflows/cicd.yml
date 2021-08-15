@@ -68,7 +68,7 @@ jobs:
                 "ENV_FOR_DYNACONF": "production"
             },
              "spark_conf": {
-              "fs.azure.account.key.himanshudemostoageacc.dfs.core.windows.net": "${{ secrets.ADLS_DEMO_STORAGE_ACC_ACCESS_KEY }}"
+              "fs.azure.account.key.himanshudemostoageacc.dfs.core.windows.net": "{{secrets/adls/himanshu-adls-key}}"
             }
           },
          "libraries": [
