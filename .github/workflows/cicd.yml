@@ -55,7 +55,7 @@ jobs:
     - name: Create job
       run: |
         poetry run databricks jobs create --json '{
-          "name": "himanshu-test-job",
+          "name": "Covid analysis pipeline",
           "new_cluster": {
             "spark_version": "8.2.x-scala2.12",
             "node_type_id": "Standard_DS3_v2",
@@ -67,7 +67,6 @@ jobs:
             "spark_env_vars": {
                 "ENV_FOR_DYNACONF": "production"
             },
-            "autotermination_minutes": 60,
             "libraries": [
               {
                 "whl": "${{ env.DEPLOYMENT_PATH }}/jobs-0.1.0-py3-none-any.whl"
