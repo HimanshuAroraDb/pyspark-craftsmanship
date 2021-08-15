@@ -7,7 +7,8 @@ on:
     branches: [ main ]
 
 jobs:
-  build-and-release-pipeline:
+  build-and-release:
+
     runs-on: ubuntu-latest
     env:
       DEPLOYMENT_PATH: dbfs:/FileStore/jars/pyspark-craftsmanship
@@ -49,4 +50,5 @@ jobs:
       run: |
         poetry run databricks fs cp ./dist $DEPLOYMENT_PATH -r --overwrite
     - name: Import notebook to workspace
+      run: |
         poetry run databricks workspace import ./data_pipeline_notebook.py NOTEBOOK_PATH --overwrite
