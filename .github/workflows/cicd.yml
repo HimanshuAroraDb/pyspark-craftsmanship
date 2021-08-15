@@ -56,7 +56,27 @@ jobs:
       run: |
         poetry run databricks jobs create --json '{
           "name": "himanshu-test-job",
-          "existing_cluster_id": "0114-122447-foods609",
+          "new_cluster": {
+            "spark_version": "8.2.x-scala2.12",
+            "node_type_id": "Standard_DS3_v2",
+            "num_workers": null,
+            "autoscale": {
+                "min_workers": 2,
+                "max_workers": 8
+            },
+            "spark_env_vars": {
+                "ENV_FOR_DYNACONF": "production"
+            },
+            "autotermination_minutes": 60,
+            "libraries": [
+              {
+                "whl": "${{ env.DEPLOYMENT_PATH }}/jobs-0.1.0-py3-none-any.whl"
+              }
+            ],
+             "spark_conf": {
+              "fs.azure.account.key.himanshudemostoageacc.dfs.core.windows.net": "${{ secrets.ADLS_DEMO_STORAGE_ACC_ACCESS_KEY }}"
+            }
+          },
           "notebook_task": {
             "notebook_path": "${{ env.NOTEBOOK_PATH }}"
           }
