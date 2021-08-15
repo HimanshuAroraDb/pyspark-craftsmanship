@@ -7,12 +7,13 @@ on:
     branches: [ main ]
 
 jobs:
-  build-and-deploy:
+  build-and-release-pipeline:
 
     runs-on: ubuntu-latest
     env:
       DEPLOYMENT_PATH: dbfs:/FileStore/jars/pyspark-craftsmanship
       DATABRICKS_URL: https://adb-984752964297111.11.azuredatabricks.net
+      NOTEBOOK_PATH: /Users/himanshu.arora@databricks.com/covid/data_pipeline_notebook
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.7
@@ -43,3 +44,5 @@ jobs:
     - name: Deploy artifact
       run: |
         poetry run databricks fs cp ./dist $DEPLOYMENT_PATH -r --overwrite
+    - name: Import notebook to workspace
+        poetry run databricks workspace import ./data_pipeline_notebook.py NOTEBOOK_PATH --overwrite
