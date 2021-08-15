@@ -67,15 +67,15 @@ jobs:
             "spark_env_vars": {
                 "ENV_FOR_DYNACONF": "production"
             },
-            "libraries": [
-              {
-                "whl": "${{ env.DEPLOYMENT_PATH }}/jobs-0.1.0-py3-none-any.whl"
-              }
-            ],
              "spark_conf": {
               "fs.azure.account.key.himanshudemostoageacc.dfs.core.windows.net": "${{ secrets.ADLS_DEMO_STORAGE_ACC_ACCESS_KEY }}"
             }
           },
+         "libraries": [
+            {
+              "whl": "${{ env.DEPLOYMENT_PATH }}/jobs-0.1.0-py3-none-any.whl"
+            }
+          ],
           "notebook_task": {
             "notebook_path": "${{ env.NOTEBOOK_PATH }}"
           }
