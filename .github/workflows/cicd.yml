@@ -51,4 +51,4 @@ jobs:
         poetry run databricks fs cp ./dist $DEPLOYMENT_PATH -r --overwrite
     - name: Import notebook to workspace
       run: |
-        poetry run databricks workspace import ./data_pipeline_notebook.py NOTEBOOK_PATH --overwrite
+        poetry run databricks workspace import --overwrite ./data_pipeline_notebook.py NOTEBOOK_PATH
