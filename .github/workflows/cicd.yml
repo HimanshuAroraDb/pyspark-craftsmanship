@@ -35,6 +35,9 @@ jobs:
       run: |
         echo "${db_host}
         $db_token" | poetry run databricks configure --token
+    - name: Set project version env variable
+      run: |
+        echo "PROJECT_VERSION=$(poetry version | cut -d' '  -f2)" >> $GITHUB_ENV
     - name: Test with pytest
       run: |
         poetry run pytest tests -v --junitxml="result.xml"
@@ -73,7 +76,7 @@ jobs:
           },
          "libraries": [
             {
-              "whl": "${{ env.DEPLOYMENT_PATH }}/*.whl"
+              "whl": "${{ env.DEPLOYMENT_PATH }}/jobs-"${{ env.PROJECT_VERSION }}-py3-none-any.whl"
             }
           ],
           "notebook_task": {
