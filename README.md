@@ -23,11 +23,15 @@ Dynaconf is used for project configuration management. The config file (settings
 ![CICD](https://github.com/HimanshuAroraDb/pyspark-craftsmanship/blob/main/cicd.png?raw=true)
 
 We have used the GitHub [actions](https://docs.github.com/en/actions) for CI/CD part. As you can see in the [cicd workflow file](https://github.com/HimanshuAroraDb/pyspark-craftsmanship/blob/main/.github/workflows/cicd.yml). The CICD workflow starts by installing all the necesary dependencies like python, jdk and other python packages defined in the poerty description file. We also install and set up [databricks-cli](https://docs.databricks.com/dev-tools/cli/index.html) as it is needed to interact with workspace's dbfs. 
-Once all is installed and setup we run the unit tests, publish test report, prepare poetry wheel package and copy that package to databricks [dbfs](https://docs.databricks.com/data/databricks-file-system.html) file system. This is where the build and release cycle is complete. Next part of the workflow is the job deployment on Databricks workspace which is completely optional. For job deployment we start by copying the data pipeline notebook to workspace and then we create a job on Databricks with required job and cluster configration. 
+Once all is installed and setup we run the unit tests, publish tests report, prepare poetry wheel package and copy that package to [databricks file system](https://docs.databricks.com/data/databricks-file-system.html) (aka dbfs). At this step the build and release cycle is complete. Next part of the workflow is the job deployment on Databricks workspace which is completely optional. You can use it if you want to automate the job creation and execution too. For job deployment we start by copying the data pipeline notebook to workspace and then we create a job on Databricks with required job and cluster configuration (passed as json string). To execute the job either you can set a cron schedule for job execution in the job configuration or you can manually trigger the job once it’s created on Databricks workspace.
+
+In job configuration json string we are running the data pipeline notebook as a task and the wheel package of this project will be installed on cluster as a dependency. We have also set the required ADLS access key as spark conf in the cluster configuration to access the desired data files from ADLS. Since access key as a sensitive value so instead of putting it in clear text we have used Databricks provided [secret scope](https://docs.databricks.com/security/secrets/secret-scopes.html). To use the production configuration settings we have alos set dynaconf environment variable in cluster configuration. 
 
 We have used Databricks as the deployment destination but you are not bound to do that. By chaning the deployment step (i.e. *Deploy artifact* in [cicd.yml](https://github.com/HimanshuAroraDb/pyspark-craftsmanship/blob/main/.github/workflows/cicd.yml)) of CICD workflow you can deploy the wheel package to a data platform/cloud/repository of your choice. And if you prefer to publish your project's wheel package as a library to PyPi or to a private repositiry then run `poerty publish` command.
 
 ### Commands
+
+To add a dependency package: `poetry add <package-name>`. (add option `--dev` if want to install just a dev dependency)
 
 To install dependencies: `poetry install`
 
@@ -36,12 +40,3 @@ To run unit tests: `poetry run pytest tests -v --junitxml="result.xml"`
 To build a wheel package: `poetry build`
 
 To run pyspark jobs locally: `poetry run spark-submit --packages io.delta:delta-core_2.12:1.0.0 --py-files dist/jobs-0.1.0-py3-none-any.whl jobs/bronze.py`
-
-To run all the job as pipeline on Databricks execute following steps:
- - Import `data_pipeline_notebook.py` file as notebook on Databricks.
- - Make sure to change the input & output path configurations in settings.toml file according to your cloud settings.
- - Once the configurations are set accordingly then run the CI/CD pipeline so that the recent wheel can be deployed to dbfs.
- - As you set input/output paths also make sure your cluster have necessary permission to access those paths (either via passthrough or via mounting using a service principal or an access key for example).
- - Install project's wheel package available on dbfs as a library on your cluster.
- - Don't forget to set `ENV_FOR_DYNACONF=production` env variable in your cluster conf to actiave production configuration settings.
- - Now you are good to go, so either run your notebook interactively or schedule it as a cron job taking in account the above steps.
