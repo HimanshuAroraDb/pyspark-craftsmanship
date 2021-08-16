@@ -32,7 +32,7 @@ Next part of the workflow is the job creation on Databricks workspace which is c
 
 In job configuration json string we are running the data pipeline notebook as a notebook task and the wheel package of this project will be installed on cluster as a dependency. We have also set the required ADLS access key as spark conf in the cluster configuration to access the desired data files from ADLS. Since access key as a sensitive value so instead of putting it in clear text we have used Databricks provided [secret scope](https://docs.databricks.com/security/secrets/secret-scopes.html). To use the production configuration settings we have also set dynaconf environment variable to production in cluster configuration. 
 
-We have used Databricks as the deployment target but you are not bound to do that. By changing the deployment step (i.e. *Deploy artifact* in [cicd.yml](https://github.com/HimanshuAroraDb/pyspark-craftsmanship/blob/main/.github/workflows/cicd.yml)) of CI/CD workflow you can deploy the wheel package to a data platform/cloud/repository of your choice. And if you prefer to publish your project's wheel package as a library to PyPi or to a private repositiry then run `poerty publish` command.
+We have used Databricks as the deployment target but you are not bound to do that. By changing the deployment step (i.e. *Deploy artifact* in [cicd.yml](https://github.com/HimanshuAroraDb/pyspark-craftsmanship/blob/main/.github/workflows/cicd.yml)) of CI/CD workflow you can deploy the wheel package to a data platform/cloud/repository of your choice. And if you prefer to publish your project's wheel package as a library to PyPi or to a private repositiry then run `poetry publish` command.
 
 ### Commands
 
