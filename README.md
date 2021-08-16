@@ -20,8 +20,10 @@ Dynaconf is used for project configuration management. The config file (settings
 
 ### CI/CD
 
-We have used the GitHub [actions](https://docs.github.com/en/actions) for CI/CD part. As you can see in the [cicd workflow file](https://github.com/HimanshuAroraDb/pyspark-craftsmanship/blob/main/.github/workflows/cicd.yml). As the part of CICD workflow we start by installing all the necesary dependencies like python, jdk and other python packages defined in the poerty description file. We also install and set up [databricks-cli](https://docs.databricks.com/dev-tools/cli/index.html) as it is needed to interact with workspace's dbfs. 
-Once all is installed and setup we run the unit tests, prepare poetry wheel package and copy that package to databricks [dbfs](https://docs.databricks.com/data/databricks-file-system.html) file system.
+![CICD](https://github.com/HimanshuAroraDb/pyspark-craftsmanship/blob/main/cicd.png?raw=true)
+
+We have used the GitHub [actions](https://docs.github.com/en/actions) for CI/CD part. As you can see in the [cicd workflow file](https://github.com/HimanshuAroraDb/pyspark-craftsmanship/blob/main/.github/workflows/cicd.yml). The CICD workflow starts by installing all the necesary dependencies like python, jdk and other python packages defined in the poerty description file. We also install and set up [databricks-cli](https://docs.databricks.com/dev-tools/cli/index.html) as it is needed to interact with workspace's dbfs. 
+Once all is installed and setup we run the unit tests, publish test report, prepare poetry wheel package and copy that package to databricks [dbfs](https://docs.databricks.com/data/databricks-file-system.html) file system. This is where the build and release cycle is complete. Next part of the workflow is the job deployment on Databricks workspace which is completely optional. For job deployment we start by copying the data pipeline notebook to workspace and then we create a job on Databricks with required job and cluster configration. 
 
 We have used Databricks as the deployment destination but you are not bound to do that. By chaning the deployment step (i.e. *Deploy artifact* in [cicd.yml](https://github.com/HimanshuAroraDb/pyspark-craftsmanship/blob/main/.github/workflows/cicd.yml)) of CICD workflow you can deploy the wheel package to a data platform/cloud/repository of your choice. And if you prefer to publish your project's wheel package as a library to PyPi or to a private repositiry then run `poerty publish` command.
 
