@@ -76,7 +76,7 @@ jobs:
           },
          "libraries": [
             {
-              "whl": "${{ env.DEPLOYMENT_PATH }}/jobs-"${{ env.PROJECT_VERSION }}-py3-none-any.whl"
+              "whl": "${{ env.DEPLOYMENT_PATH }}/jobs-${{ env.PROJECT_VERSION }}-py3-none-any.whl"
             }
           ],
           "notebook_task": {
